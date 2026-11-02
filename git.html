@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Căn Bản – DevMaster Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      DevMaster Academy
+    </a>
+    <nav class="nav-main">
+      <a href="index.html">Trang chủ</a>
+      <a href="git.html" class="active">Git</a>
+      <a href="github.html">GitHub</a>
+      <a href="vscode.html">VS Code</a>
+      <a href="python.html">Python</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Trang chủ</a>
+      <span class="sep">›</span>
+      <span>Git Căn Bản</span>
+    </div>
+    <h1>🔀 Git – Hệ Thống Quản Lý Phiên Bản</h1>
+    <p class="lead">Nắm vững Git từ cài đặt đến branching, đủ để tự tin làm dự án thực tế.</p>
+  </div>
+</div>
+
+<main class="container">
+<div class="lessons-list">
+
+<!-- ====== LESSON 1 ====== -->
+<div class="lesson">
+  <div class="lesson-header">
+    <h2><span class="lesson-num orange">1</span> Cài đặt &amp; Cấu hình Git</h2>
+    <span class="badge badge-orange">Bắt đầu</span>
+  </div>
+  <div class="lesson-body">
+    <p>Git là hệ thống quản lý phiên bản phân tán phổ biến nhất thế giới. Trước khi sử dụng, bạn cần tải và cài đặt Git trên máy tính.</p>
+
+    <h3>Tải và cài đặt</h3>
+    <p>Truy cập trang chủ <strong><a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a></strong> và tải phiên bản phù hợp với hệ điều hành của bạn (Windows, macOS hoặc Linux). Trên Windows, trình cài đặt sẽ bao gồm cả <strong>Git Bash</strong> — một terminal giả lập Linux giúp bạn chạy các lệnh Git một cách dễ dàng.</p>
+    <p>Sau khi cài đặt xong, mở Terminal (hoặc Git Bash trên Windows) và chạy <code>git --version</code> để xác nhận Git đã được cài thành công.</p>
+
+    <h3>Cấu hình ban đầu</h3>
+    <p>Git cần biết bạn là ai trước khi ghi nhận các thay đổi. Hãy thiết lập tên và email — thông tin này sẽ được gắn vào mỗi commit bạn tạo ra.</p>
+
+    <div class="code-block">
+      <div class="code-bar">
+        <span class="code-lang">Bash</span>
+        <button class="btn-copy">Sao chép</button>
+      </div>
+      <pre><code><span class="t-cm"># Thiết lập tên người dùng</span>
+<span class="t-fn">git</span> <span class="t-kw">config</span> <span class="t-op">--global</span> user.name <span class="t-str">"Tên Của Bạn"</span>
+
+<span class="t-cm"># Thiết lập email</span>
+<span class="t-fn">git</span> <span class="t-kw">config</span> <span class="t-op">--global</span> user.email <span class="t-str">"email@example.com"</span>
+
+<span class="t-cm"># Đặt nhánh mặc định là "main" (thay vì "master")</span>
+<span class="t-fn">git</span> <span class="t-kw">config</span> <span class="t-op">--global</span> init.defaultBranch <span class="t-str">main</span>
+
+<span class="t-cm"># Xem toàn bộ cấu hình hiện tại</span>
+<span class="t-fn">git</span> <span class="t-kw">config</span> <span class="t-op">--list</span></code></pre>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">💡</span>
+      <div><strong>Cờ --global:</strong> Khi dùng <code>--global</code>, cấu hình sẽ được áp dụng cho <em>tất cả</em> các dự án Git trên máy tính của bạn. Nếu bạn muốn thiết lập riêng cho một dự án cụ thể, hãy bỏ cờ <code>--global</code> và chạy lệnh trong thư mục dự án đó. Cấu hình cục bộ (local) sẽ ghi đè cấu hình toàn cục (global).</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header">🏋️ Bài tập: Thiết lập tên người dùng</div>
+      <div class="exercise-body">
+        <p>Viết lệnh để thiết lập tên người dùng Git là <strong>'Minh Tran'</strong>.</p>
+        <div class="term-exercise" data-term='git config --global user.name "Minh Tran"||git config --global user.name Minh Tran||git config --global user.name "Minh Tran"'>
+          <div class="prompt">Hoàn thành lệnh bên dưới:</div>
+          <div class="term-input">
+            <input type="text" placeholder="Gõ lệnh git tại đây..." spellcheck="false">
+            <button>Kiểm tra</button>
+          </div>
+          <div class="term-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== LESSON 2 ====== -->
+<div class="lesson">
+  <div class="lesson-header">
+    <h2><span class="lesson-num orange">2</span> Ba Trạng Thái Của Git (Working → Staging → Repository)</h2>
+    <span class="badge badge-orange">Lý thuyết</span>
+  </div>
+  <div class="lesson-body">
+    <p>Để sử dụng Git hiệu quả, bạn cần hiểu rõ ba khu vực (area) mà file của bạn di chuyển qua. Đây là khái niệm cốt lõi nhất của Git.</p>
+
+    <h3>Ba khu vực chính</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Khu vực</th>
+          <th>Tên tiếng Anh</th>
+          <th>Mô tả</th>
+          <th>Lệnh liên quan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>📁 Thư mục làm việc</strong></td>
+          <td>Working Directory</td>
+          <td>Nơi bạn trực tiếp chỉnh sửa, tạo mới hoặc xóa file. Đây là trạng thái "chưa được theo dõi" hoặc "đã thay đổi".</td>
+          <td><code>git status</code></td>
+        </tr>
+        <tr>
+          <td><strong>📋 Vùng chuẩn bị</strong></td>
+          <td>Staging Area (Index)</td>
+          <td>Vùng trung gian — nơi bạn "đánh dấu" những thay đổi sẽ được đưa vào commit tiếp theo. Bạn có toàn quyền chọn file nào sẽ vào commit.</td>
+          <td><code>git add</code></td>
+        </tr>
+        <tr>
+          <td><strong>🗄️ Kho lưu trữ</strong></td>
+          <td>Local Repository</td>
+          <td>Cơ sở dữ liệu lịch sử của dự án. Mỗi commit là một "ảnh chụp" (snapshot) vĩnh viễn mà bạn có thể quay lại bất kỳ lúc nào.</td>
+          <td><code>git commit</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Luồng di chuyển của file</h3>
+    <p>Hãy hình dung quy trình như một dây chuyền sản xuất:</p>
+    <div class="code-block">
+      <div class="code-bar">
+        <span class="code-lang">Sơ đồ</span>
+        <button class="btn-copy">Sao chép</button>
+      </div>
+      <pre><code><span class="t-cm">  ┌──────────────┐     git add      ┌──────────────┐    git commit    ┌──────────────┐</span>
+<span class="t-cm">  │   Working    │ ──────────────▶  │   Staging    │ ──────────────▶  │  Repository  │</span>
+<span class="t-cm">  │  Directory   │                  │    Area      │                  │   (Local)    │</span>
+<span class="t-cm">  └──────────────┘                  └──────────────┘                  └──────────────┘</span>
+<span class="t-cm">     Chỉnh sửa file                 Chọn thay đổi                    Lưu vĩnh viễn</span></code></pre>
+    </div>
+    <p>Bạn chỉnh sửa file trong <strong>Working Directory</strong>, dùng <code>git add</code> để đưa thay đổi vào <strong>Staging Area</strong>, rồi dùng <code>git commit</code> để ghi nhận chính thức vào <strong>Repository</strong>.</p>
+
+    <div class="callout callout-tip">
+      <span class="callout-icon">✅</span>
+      <div><strong>Mẹo – Atomic Commits:</strong> Mỗi commit chỉ nên chứa <em>một thay đổi logic duy nhất</em> (ví dụ: sửa một bug, thêm một tính năng). Điều này giúp lịch sử dự án dễ đọc, dễ review và dễ hoàn tác khi cần. Tránh gộp nhiều thay đổi không liên quan vào cùng một commit.</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header">🏋️ Bài tập: Hiểu luồng Git</div>
+      <div class="exercise-body">
+        <p>Lệnh nào đưa file từ <strong>Working Directory</strong> sang <strong>Staging Area</strong>?</p>
+        <div class="quiz-options" data-quiz="1">
+          <button class="quiz-opt"><span class="opt-letter">A</span> git commit</button>
+          <button class="quiz-opt"><span class="opt-letter">B</span> git add</button>
+          <button class="quiz-opt"><span class="opt-letter">C</span> git push</button>
+          <button class="quiz-opt"><span class="opt-letter">D</span> git status</button>
+          <div class="quiz-feedback" data-ok="Chính xác! 🎉 Lệnh git add đưa các thay đổi từ Working Directory vào Staging Area, chuẩn bị cho lần commit tiếp theo." data-nok="Chưa đúng! Đáp án đúng là B — git add. Lệnh này chuyển file từ Working Directory sang Staging Area."></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== LESSON 3 ====== -->
+<div class="lesson">
+  <div class="lesson-header">
+    <h2><span class="lesson-num orange">3</span> Các Lệnh Cơ Bản Hàng Ngày</h2>
+    <span class="badge badge-orange">Thực hành</span>
+  </div>
+  <div class="lesson-body">
+    <p>Dưới đây là 5 lệnh Git bạn sẽ dùng hầu như mỗi ngày. Hãy nắm vững chúng trước khi học thêm các lệnh nâng cao.</p>
+
+    <div class="code-block">
+      <div class="code-bar">
+        <span class="code-lang">Bash</span>
+        <button class="btn-copy">Sao chép</button>
+      </div>
+      <pre><code><span class="t-cm"># 1. Khởi tạo kho Git mới trong thư mục hiện tại</span>
+<span class="t-fn">git</span> <span class="t-kw">init</span>
+
+<span class="t-cm"># 2. Xem trạng thái hiện tại (file nào đã thay đổi, file nào đang ở staging)</span>
+<span class="t-fn">git</span> <span class="t-kw">status</span>
+
+<span class="t-cm"># 3. Đưa TẤT CẢ thay đổi vào Staging Area</span>
+<span class="t-fn">git</span> <span class="t-kw">add</span> <span class="t-op">.</span>
+
+<span class="t-cm"># 4. Tạo commit với thông điệp mô tả</span>
+<span class="t-fn">git</span> <span class="t-kw">commit</span> <span class="t-op">-m</span> <span class="t-str">"thêm trang chủ"</span>
+
+<span class="t-cm"># 5. Xem lịch sử commit dạng ngắn gọn</span>
+<span class="t-fn">git</span> <span class="t-kw">log</span> <span class="t-op">--oneline</span></code></pre>
+    </div>
+
+    <h3>Giải thích chi tiết</h3>
+
+    <p><strong><code>git init</code></strong> — Tạo một kho Git trống (thư mục ẩn <code>.git</code>) trong thư mục hiện tại. Bạn chỉ cần chạy lệnh này <em>một lần duy nhất</em> khi bắt đầu dự án mới.</p>
+
+    <p><strong><code>git status</code></strong> — "Kim chỉ nam" của bạn. Lệnh này cho biết file nào chưa được theo dõi (untracked), file nào đã thay đổi (modified), và file nào đang trong Staging Area (staged). Hãy chạy lệnh này <em>thường xuyên</em> để nắm rõ tình trạng dự án.</p>
+
+    <p><strong><code>git add .</code></strong> — Dấu chấm (<code>.</code>) có nghĩa là "tất cả". Lệnh này đưa mọi thay đổi (file mới, file đã sửa, file đã xóa) vào Staging Area. Bạn cũng có thể chỉ định file cụ thể: <code>git add index.html</code>.</p>
+
+    <p><strong><code>git commit -m "..."</code></strong> — Lưu một "ảnh chụp" (snapshot) của Staging Area vào lịch sử dự án. Cờ <code>-m</code> cho phép bạn viết thông điệp commit ngay trên dòng lệnh. Thông điệp nên ngắn gọn, rõ ràng và mô tả <em>cái gì</em> đã thay đổi.</p>
+
+    <p><strong><code>git log --oneline</code></strong> — Hiển thị lịch sử commit dạng rút gọn, mỗi commit trên một dòng gồm mã hash ngắn và thông điệp. Rất hữu ích để nhanh chóng xem tổng quan lịch sử dự án.</p>
+
+    <div class="exercise">
+      <div class="exercise-header">🏋️ Bài tập: Viết lệnh commit</div>
+      <div class="exercise-body">
+        <p>Viết lệnh commit với thông điệp <strong>'thêm trang đăng nhập'</strong>.</p>
+        <div class="term-exercise" data-term='git commit -m "thêm trang đăng nhập"||git commit -m &apos;thêm trang đăng nhập&apos;'>
+          <div class="prompt">Hoàn thành lệnh bên dưới:</div>
+          <div class="term-input">
+            <input type="text" placeholder="Gõ lệnh git tại đây..." spellcheck="false">
+            <button>Kiểm tra</button>
+          </div>
+          <div class="term-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== LESSON 4 ====== -->
+<div class="lesson">
+  <div class="lesson-header">
+    <h2><span class="lesson-num orange">4</span> Phân Nhánh (Branch) &amp; Hợp Nhất (Merge)</h2>
+    <span class="badge badge-orange">Nâng cao</span>
+  </div>
+  <div class="lesson-body">
+    <p>Branching (phân nhánh) là một trong những tính năng mạnh mẽ nhất của Git. Nó cho phép bạn tạo một "phiên bản song song" của dự án để phát triển tính năng mới, sửa bug hoặc thử nghiệm — mà không ảnh hưởng đến code chính.</p>
+
+    <h3>Khái niệm</h3>
+    <p>Hãy hình dung nhánh (branch) như một "nhánh cây" mọc ra từ thân chính. Bạn có thể làm việc trên nhánh riêng, và khi hoàn thành thì "ghép" (merge) nhánh đó trở lại nhánh chính (<code>main</code>).</p>
+    <ul>
+      <li><strong>Nhánh chính (<code>main</code>)</strong>: Chứa code ổn định, đã được kiểm tra.</li>
+      <li><strong>Nhánh tính năng (feature branch)</strong>: Nơi phát triển tính năng mới, ví dụ <code>feature/login</code>, <code>feature/cart</code>.</li>
+      <li><strong>Nhánh sửa lỗi (bugfix branch)</strong>: Dùng để sửa bug khẩn cấp, ví dụ <code>bugfix/header-overlap</code>.</li>
+    </ul>
+
+    <h3>Các lệnh quản lý nhánh</h3>
+    <div class="code-block">
+      <div class="code-bar">
+        <span class="code-lang">Bash</span>
+        <button class="btn-copy">Sao chép</button>
+      </div>
+      <pre><code><span class="t-cm"># Xem danh sách tất cả các nhánh (nhánh hiện tại có dấu *)</span>
+<span class="t-fn">git</span> <span class="t-kw">branch</span>
+
+<span class="t-cm"># Tạo nhánh mới VÀ chuyển sang nhánh đó ngay lập tức</span>
+<span class="t-fn">git</span> <span class="t-kw">checkout</span> <span class="t-op">-b</span> <span class="t-str">feature/login</span>
+
+<span class="t-cm"># Chuyển về nhánh main (lệnh mới, khuyến khích dùng)</span>
+<span class="t-fn">git</span> <span class="t-kw">switch</span> <span class="t-str">main</span>
+
+<span class="t-cm"># Hợp nhất nhánh feature/login vào nhánh hiện tại (main)</span>
+<span class="t-fn">git</span> <span class="t-kw">merge</span> <span class="t-str">feature/login</span>
+
+<span class="t-cm"># Xóa nhánh đã merge xong (dọn dẹp)</span>
+<span class="t-fn">git</span> <span class="t-kw">branch</span> <span class="t-op">-d</span> <span class="t-str">feature/login</span></code></pre>
+    </div>
+
+    <h3>Quy trình làm việc với nhánh</h3>
+    <ol>
+      <li>Đang ở nhánh <code>main</code>, tạo nhánh mới: <code>git checkout -b feature/login</code></li>
+      <li>Viết code, commit nhiều lần trên nhánh <code>feature/login</code></li>
+      <li>Khi hoàn thành, chuyển về <code>main</code>: <code>git switch main</code></li>
+      <li>Merge nhánh tính năng vào: <code>git merge feature/login</code></li>
+      <li>Xóa nhánh cũ: <code>git branch -d feature/login</code></li>
+    </ol>
+
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <div><strong>Merge Conflicts (Xung đột hợp nhất):</strong> Khi hai nhánh cùng chỉnh sửa <em>cùng một dòng</em> trong cùng một file, Git không thể tự quyết định giữ phiên bản nào và sẽ báo <strong>conflict</strong>. Bạn cần mở file bị xung đột, chọn giữ đoạn code nào (hoặc kết hợp cả hai), sau đó <code>git add</code> và <code>git commit</code> để hoàn tất quá trình merge. Đừng hoảng sợ — conflict là chuyện bình thường!</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header">🏋️ Bài tập: Lệnh tạo nhánh</div>
+      <div class="exercise-body">
+        <p>Lệnh nào tạo nhánh mới <strong>và chuyển sang nhánh đó</strong> ngay lập tức?</p>
+        <div class="quiz-options" data-quiz="1">
+          <button class="quiz-opt"><span class="opt-letter">A</span> git branch new</button>
+          <button class="quiz-opt"><span class="opt-letter">B</span> git checkout -b new</button>
+          <button class="quiz-opt"><span class="opt-letter">C</span> git merge new</button>
+          <button class="quiz-opt"><span class="opt-letter">D</span> git push new</button>
+          <div class="quiz-feedback" data-ok="Chính xác! 🎉 Lệnh git checkout -b tạo nhánh mới và tự động chuyển sang nhánh đó. Bạn cũng có thể dùng git switch -c new (cú pháp mới hơn)." data-nok="Chưa đúng! Đáp án đúng là B — git checkout -b new. Lệnh git branch new chỉ tạo nhánh mà không chuyển sang. Cờ -b trong checkout giúp vừa tạo vừa chuyển nhánh."></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== LESSON 5 ====== -->
+<div class="lesson">
+  <div class="lesson-header">
+    <h2><span class="lesson-num orange">5</span> Mô Phỏng Git Terminal Tương Tác</h2>
+    <span class="badge badge-orange">Thực hành</span>
+  </div>
+  <div class="lesson-body">
+    <p>Hãy thử trải nghiệm Git ngay trên trình duyệt! Bấm các nút lệnh phía trên hoặc gõ trực tiếp vào ô lệnh bên dưới để xem Git phản hồi như thế nào. Đây là cách tuyệt vời để làm quen với các lệnh Git trước khi thao tác trên dự án thật.</p>
+
+    <div class="git-sim">
+      <div class="git-stages">
+        <div class="git-stage"><div class="stage-label">Working</div><div class="stage-val">2 thay đổi</div></div>
+        <div class="git-stage"><div class="stage-label">Staging</div><div class="stage-val">Trống</div></div>
+        <div class="git-stage"><div class="stage-label">Repository</div><div class="stage-val">2 commits</div></div>
+        <div class="git-stage"><div class="stage-label">Remote</div><div class="stage-val">Đồng bộ</div></div>
+      </div>
+      <div class="git-graph"><div class="commits-row" id="commits-row"></div></div>
+      <div class="sim-term">
+        <div class="sim-term-bar">
+          <button class="cmd-btn" data-cmd="git status">git status</button>
+          <button class="cmd-btn" data-cmd="git add .">git add .</button>
+          <button class="cmd-btn" data-cmd='git commit -m "update"'>git commit</button>
+          <button class="cmd-btn" data-cmd="git push origin main">git push</button>
+          <button class="cmd-btn" data-cmd="git log">git log</button>
+          <button class="cmd-btn" data-cmd="clear">clear</button>
+        </div>
+        <div class="sim-screen" id="sim-screen">
+          <div style="color:#89b4fa">Chào mừng! Hãy thử gõ lệnh Git hoặc bấm các nút phía trên.</div>
+        </div>
+        <div class="sim-input">
+          <span>$</span>
+          <input type="text" id="sim-input" placeholder="Gõ lệnh git..." autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header">🏋️ Bài tập: Stage và Commit liên tiếp</div>
+      <div class="exercise-body">
+        <p>Sau khi chỉnh sửa file, hãy viết đầy đủ <strong>2 lệnh</strong> (cách nhau bởi dấu <code>&amp;&amp;</code>) để stage tất cả thay đổi và commit với thông điệp <code>"update"</code>.</p>
+        <div class="term-exercise" data-term='git add . && git commit -m "update"||git add . && git commit -m &apos;update&apos;||git add . &&git commit -m "update"||git add . && git commit -m "update"'>
+          <div class="prompt">Hoàn thành lệnh bên dưới:</div>
+          <div class="term-input">
+            <input type="text" placeholder="Gõ lệnh git tại đây..." spellcheck="false">
+            <button>Kiểm tra</button>
+          </div>
+          <div class="term-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.lessons-list -->
+
+<div style="text-align:center;margin-top:2rem">
+  <a href="github.html" class="btn btn-primary">Tiếp theo: GitHub &amp; Làm Việc Nhóm →</a>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 DevMaster Academy</span>
+    <div class="footer-links">
+      <a href="git.html">Git</a>
+      <a href="github.html">GitHub</a>
+      <a href="vscode.html">VS Code</a>
+      <a href="python.html">Python</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

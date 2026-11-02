@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Code – Tối Ưu Năng Suất Lập Trình | DevMaster Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      DevMaster Academy
+    </a>
+    <nav class="nav-main">
+      <a href="index.html">Trang chủ</a>
+      <a href="git.html">Git</a>
+      <a href="github.html">GitHub</a>
+      <a href="vscode.html" class="active">VS Code</a>
+      <a href="python.html">Python</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-banner">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Trang chủ</a>
+      <span class="sep">›</span>
+      <span>VS Code</span>
+    </div>
+    <h1>💻 VS Code – Tối Ưu Năng Suất Lập Trình</h1>
+    <p class="lead">Phím tắt, tiện ích mở rộng và kỹ thuật debug chuyên nghiệp.</p>
+  </div>
+</div>
+
+<main class="container">
+  <div class="lessons-list">
+
+    <!-- ==================== LESSON 1 ==================== -->
+    <div class="lesson">
+      <div class="lesson-header">
+        <h2><span class="lesson-num purple">1</span> Tổng Quan Giao Diện &amp; Thiết Lập Python</h2>
+        <span class="badge badge-purple">Cơ bản</span>
+      </div>
+      <div class="lesson-body">
+        <p>Visual Studio Code (VS Code) là trình soạn thảo mã nguồn miễn phí, nhẹ nhưng cực kỳ mạnh mẽ của Microsoft. Khi mở VS Code lên, bạn sẽ thấy giao diện được chia thành <strong>5 vùng chính</strong> — hiểu rõ chúng sẽ giúp bạn thao tác nhanh hơn rất nhiều.</p>
+
+        <h3>5 Vùng Giao Diện Chính</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Vùng</th>
+              <th>Vị trí</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Activity Bar</strong></td>
+              <td>Thanh dọc ngoài cùng bên trái</td>
+              <td>Chứa các biểu tượng để chuyển đổi giữa các chế độ xem: Explorer, Search, Source Control, Run &amp; Debug, Extensions. Bạn có thể kéo thả để sắp xếp lại hoặc ẩn bớt icon không dùng.</td>
+            </tr>
+            <tr>
+              <td><strong>Side Bar</strong></td>
+              <td>Bên trái, cạnh Activity Bar</td>
+              <td>Hiển thị nội dung tương ứng với biểu tượng đang chọn trên Activity Bar. Ví dụ: cây thư mục dự án (Explorer), kết quả tìm kiếm (Search), danh sách thay đổi Git (Source Control).</td>
+            </tr>
+            <tr>
+              <td><strong>Editor</strong></td>
+              <td>Vùng trung tâm, chiếm phần lớn màn hình</td>
+              <td>Nơi bạn viết và chỉnh sửa code. Hỗ trợ mở nhiều tab cùng lúc, chia màn hình (split editor) bằng <kbd>Ctrl+\</kbd>, và xem song song nhiều file.</td>
+            </tr>
+            <tr>
+              <td><strong>Panel</strong></td>
+              <td>Phía dưới Editor</td>
+              <td>Chứa Terminal tích hợp, Output, Problems (lỗi/cảnh báo), và Debug Console. Mở/đóng bằng <kbd>Ctrl+`</kbd>. Đây là nơi bạn chạy lệnh mà không cần rời VS Code.</td>
+            </tr>
+            <tr>
+              <td><strong>Status Bar</strong></td>
+              <td>Thanh ngang ở dưới cùng</td>
+              <td>Hiển thị thông tin nhanh: nhánh Git hiện tại, ngôn ngữ file, encoding (UTF-8), dòng/cột con trỏ, Python interpreter đang dùng, và các thông báo từ extension.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Thiết Lập Python Interpreter</h3>
+        <p>Khi làm việc với Python trong VS Code, bước đầu tiên là <strong>chọn đúng Python interpreter</strong> (trình thông dịch). Điều này quyết định phiên bản Python và môi trường ảo nào được dùng khi chạy code.</p>
+
+        <p><strong>Cách thực hiện:</strong></p>
+        <ol>
+          <li>Nhấn <kbd>Ctrl+Shift+P</kbd> để mở <strong>Command Palette</strong> — đây là "bộ não" của VS Code, cho phép bạn truy cập mọi lệnh.</li>
+          <li>Gõ <code>Python: Select Interpreter</code> rồi nhấn <kbd>Enter</kbd>.</li>
+          <li>Chọn phiên bản Python phù hợp từ danh sách. Nếu bạn đang dùng môi trường ảo, hãy chọn interpreter nằm trong thư mục <code>.venv</code>.</li>
+        </ol>
+
+        <div class="code-block">
+          <div class="code-bar">
+            <span class="code-lang">Giao diện Command Palette</span>
+            <button class="btn-copy">Sao chép</button>
+          </div>
+          <pre><code><span class="t-cm"># Bước 1: Mở Command Palette</span>
+<span class="t-kw">Ctrl+Shift+P</span>
+
+<span class="t-cm"># Bước 2: Gõ lệnh</span>
+<span class="t-str">Python: Select Interpreter</span>
+
+<span class="t-cm"># Bước 3: Chọn interpreter, ví dụ:</span>
+<span class="t-fn">Python 3.12.0</span> (<span class="t-var">.venv</span>)  <span class="t-cm">← Ưu tiên chọn cái này</span>
+<span class="t-fn">Python 3.12.0</span> (<span class="t-var">/usr/bin/python3</span>)
+<span class="t-fn">Python 3.11.5</span> (<span class="t-var">base: conda</span>)</code></pre>
+        </div>
+
+        <div class="callout callout-info">
+          <span class="callout-icon">💡</span>
+          <div><strong>Mẹo chọn môi trường ảo:</strong> Nếu dự án của bạn có thư mục <code>.venv</code> (tạo bằng <code>python -m venv .venv</code>), hãy luôn chọn interpreter bên trong <code>.venv</code>. Điều này đảm bảo các thư viện được cài đặt riêng cho dự án, không ảnh hưởng đến hệ thống. VS Code thường tự phát hiện và gợi ý <code>.venv</code> — bạn chỉ cần xác nhận. Nếu không thấy, hãy nhấn <strong>"Enter interpreter path…"</strong> rồi trỏ đến <code>.venv/Scripts/python.exe</code> (Windows) hoặc <code>.venv/bin/python</code> (macOS/Linux).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== LESSON 2 ==================== -->
+    <div class="lesson">
+      <div class="lesson-header">
+        <h2><span class="lesson-num purple">2</span> Bảng Tra Cứu Phím Tắt Tương Tác</h2>
+        <span class="badge badge-purple">Năng suất</span>
+      </div>
+      <div class="lesson-body">
+        <p>Phím tắt là <strong>siêu năng lực</strong> của lập trình viên. Thay vì dùng chuột tìm kiếm trong menu, bạn chỉ cần nhấn tổ hợp phím để thực hiện ngay hành động mong muốn. Bảng bên dưới tổng hợp các phím tắt quan trọng nhất — bạn có thể <strong>tìm kiếm</strong> theo tên hoặc <strong>lọc theo danh mục</strong> để nhanh chóng tra cứu.</p>
+
+        <div class="search-bar">
+          <input type="text" id="sc-search" placeholder="🔍 Tìm phím tắt (ví dụ: format, terminal, copy...)">
+          <div class="filter-pills">
+            <button class="pill active" data-cat="all">Tất cả</button>
+            <button class="pill" data-cat="nav">Di chuyển</button>
+            <button class="pill" data-cat="edit">Soạn thảo</button>
+            <button class="pill" data-cat="multi">Đa con trỏ</button>
+            <button class="pill" data-cat="term">Terminal</button>
+          </div>
+        </div>
+        <div class="shortcuts-grid" id="sc-grid"></div>
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">🚀</span>
+          <div><strong>Bí quyết ghi nhớ:</strong> Đừng cố học hết tất cả phím tắt cùng lúc! Mỗi ngày hãy chọn <strong>2–3 phím tắt</strong> và ép bản thân dùng chúng thay vì chuột. Sau 1–2 tuần, chúng sẽ trở thành phản xạ tự nhiên. Bạn cũng có thể nhấn <kbd>Ctrl+K Ctrl+S</kbd> để mở bảng phím tắt đầy đủ của VS Code và tùy chỉnh theo ý muốn.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== LESSON 3 ==================== -->
+    <div class="lesson">
+      <div class="lesson-header">
+        <h2><span class="lesson-num purple">3</span> Top Tiện Ích Mở Rộng (Extensions)</h2>
+        <span class="badge badge-purple">Công cụ</span>
+      </div>
+      <div class="lesson-body">
+        <p>Extensions (tiện ích mở rộng) biến VS Code từ một trình soạn thảo đơn giản thành một <strong>IDE toàn diện</strong>. Dưới đây là những extension thiết yếu mà mọi lập trình viên Python nên cài đặt ngay.</p>
+
+        <p><strong>Cách cài đặt:</strong> Nhấn <kbd>Ctrl+Shift+X</kbd> để mở bảng Extensions, gõ tên extension, rồi nhấn <strong>Install</strong>.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Tên Extension</th>
+              <th>Tác giả</th>
+              <th>Công dụng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Python &amp; Pylance</strong></td>
+              <td>Microsoft</td>
+              <td>Hỗ trợ toàn diện cho Python: chạy code, debug, IntelliSense thông minh, auto-import, type checking, và gợi ý code theo ngữ cảnh. Pylance cung cấp phân tích code nhanh chóng và chính xác hơn nhờ engine riêng.</td>
+            </tr>
+            <tr>
+              <td><strong>GitLens</strong></td>
+              <td>GitKraken</td>
+              <td>Hiển thị ai đã sửa dòng code nào (git blame), lịch sử commit trực quan, so sánh nhánh, và dòng thời gian thay đổi của file. Không thể thiếu khi làm việc nhóm.</td>
+            </tr>
+            <tr>
+              <td><strong>Black Formatter</strong></td>
+              <td>Microsoft</td>
+              <td>Tự động format code Python theo chuẩn Black — "The uncompromising formatter". Giúp code luôn nhất quán, đẹp mắt, không cần tranh luận về style. Kết hợp với <code>"editor.formatOnSave": true</code> để tự format khi lưu file.</td>
+            </tr>
+            <tr>
+              <td><strong>Error Lens</strong></td>
+              <td>Alexander</td>
+              <td>Hiển thị lỗi và cảnh báo <strong>ngay trên dòng code</strong> thay vì chỉ ở tab Problems. Giúp bạn phát hiện và sửa lỗi nhanh hơn nhiều vì không cần di chuyển mắt khỏi code.</td>
+            </tr>
+            <tr>
+              <td><strong>Material Icon Theme</strong></td>
+              <td>Philipp Kief</td>
+              <td>Thay thế icon mặc định bằng bộ icon Material Design đẹp mắt, dễ phân biệt. Mỗi loại file (<code>.py</code>, <code>.js</code>, <code>.html</code>…) có icon riêng, giúp nhận diện file nhanh hơn trong Explorer.</td>
+            </tr>
+            <tr>
+              <td><strong>Prettier</strong></td>
+              <td>Prettier team</td>
+              <td>Auto-format cho HTML, CSS, JavaScript, JSON, Markdown và nhiều ngôn ngữ khác. Giống như Black nhưng dành cho web development. Đảm bảo code frontend luôn sạch sẽ và thống nhất.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-info">
+          <span class="callout-icon">💡</span>
+          <div><strong>Lưu ý:</strong> Đừng cài quá nhiều extension cùng lúc — mỗi extension đều tiêu tốn tài nguyên. Hãy bắt đầu với <strong>Python + Pylance</strong> và <strong>Black Formatter</strong>, sau đó bổ sung dần khi thực sự cần thiết. Bạn có thể tắt (Disable) extension cho từng workspace riêng nếu chỉ cần chúng ở một số dự án.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== LESSON 4 ==================== -->
+    <div class="lesson">
+      <div class="lesson-header">
+        <h2><span class="lesson-num purple">4</span> Kỹ Thuật Debug Thay Vì print()</h2>
+        <span class="badge badge-purple">Nâng cao</span>
+      </div>
+      <div class="lesson-body">
+        <p>Hầu hết người mới học lập trình đều dùng <code>print()</code> để kiểm tra giá trị biến khi code chạy sai. Cách này đơn giản nhưng <strong>cực kỳ kém hiệu quả</strong>: bạn phải thêm/xóa hàng loạt <code>print()</code>, chạy lại code nhiều lần, và khó theo dõi luồng thực thi.</p>
+
+        <p><strong>VS Code Debugger</strong> là giải pháp chuyên nghiệp — cho phép bạn <em>dừng chương trình tại bất kỳ dòng nào</em>, quan sát giá trị tất cả biến, và bước qua từng dòng code một cách có kiểm soát.</p>
+
+        <h3>Breakpoint — Điểm Dừng</h3>
+        <p>Breakpoint là vị trí bạn muốn chương trình <strong>tạm dừng</strong> để kiểm tra trạng thái. Cách đặt:</p>
+        <ol>
+          <li>Click vào <strong>vùng trống bên trái số dòng</strong> (gutter) — một chấm đỏ 🔴 sẽ xuất hiện.</li>
+          <li>Click lần nữa để xóa breakpoint.</li>
+          <li>Bạn có thể đặt <strong>nhiều breakpoint</strong> ở nhiều dòng khác nhau.</li>
+        </ol>
+
+        <h3>Bắt Đầu Debug</h3>
+        <p>Nhấn <kbd>F5</kbd> để bắt đầu debug. Nếu là lần đầu, VS Code sẽ hỏi bạn chọn <strong>debug configuration</strong> — chọn <code>Python Debugger: Python File</code> để debug file hiện tại.</p>
+
+        <div class="code-block">
+          <div class="code-bar">
+            <span class="code-lang">Python</span>
+            <button class="btn-copy">Sao chép</button>
+          </div>
+          <pre><code><span class="t-cm"># Ví dụ: debug chương trình tính tổng</span>
+<span class="t-kw">def</span> <span class="t-fn">tinh_tong</span>(danh_sach):
+    tong <span class="t-op">=</span> <span class="t-num">0</span>
+    <span class="t-kw">for</span> so <span class="t-kw">in</span> danh_sach:     <span class="t-cm"># ← Đặt breakpoint ở đây</span>
+        tong <span class="t-op">+=</span> so              <span class="t-cm"># Quan sát 'tong' thay đổi mỗi vòng lặp</span>
+    <span class="t-kw">return</span> tong
+
+diem <span class="t-op">=</span> [<span class="t-num">8</span>, <span class="t-num">6.5</span>, <span class="t-num">9</span>, <span class="t-num">7</span>, <span class="t-num">10</span>]
+ket_qua <span class="t-op">=</span> <span class="t-fn">tinh_tong</span>(diem)
+<span class="t-fn">print</span>(<span class="t-str">f"Tổng điểm: </span><span class="t-var">{ket_qua}</span><span class="t-str">"</span>)</code></pre>
+        </div>
+
+        <h3>Các Phím Điều Khiển Debug</h3>
+        <p>Khi chương trình dừng tại breakpoint, thanh công cụ debug xuất hiện ở trên cùng. Bạn dùng các phím sau để điều khiển:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Phím tắt</th>
+              <th>Tên lệnh</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><kbd>F10</kbd></td>
+              <td><strong>Step Over</strong></td>
+              <td>Chạy dòng hiện tại và nhảy sang dòng kế tiếp. Nếu dòng đó gọi hàm, hàm được chạy hoàn chỉnh mà <em>không đi vào bên trong</em>.</td>
+            </tr>
+            <tr>
+              <td><kbd>F11</kbd></td>
+              <td><strong>Step Into</strong></td>
+              <td>Đi vào bên trong hàm đang được gọi ở dòng hiện tại. Dùng khi bạn muốn kiểm tra chi tiết logic bên trong hàm.</td>
+            </tr>
+            <tr>
+              <td><kbd>Shift+F11</kbd></td>
+              <td><strong>Step Out</strong></td>
+              <td>Chạy hết phần còn lại của hàm hiện tại và quay về dòng gọi hàm. Dùng khi bạn đã kiểm tra xong bên trong hàm và muốn thoát ra.</td>
+            </tr>
+            <tr>
+              <td><kbd>F5</kbd></td>
+              <td><strong>Continue</strong></td>
+              <td>Tiếp tục chạy chương trình cho đến breakpoint tiếp theo (hoặc kết thúc nếu không còn breakpoint nào).</td>
+            </tr>
+            <tr>
+              <td><kbd>Shift+F5</kbd></td>
+              <td><strong>Stop</strong></td>
+              <td>Dừng hoàn toàn phiên debug, kết thúc chương trình ngay lập tức.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">🚀</span>
+          <div><strong>Dùng Watch &amp; Variables panel để theo dõi biến:</strong> Khi debug, hãy mở <strong>Side Bar → Run &amp; Debug</strong> (hoặc <kbd>Ctrl+Shift+D</kbd>). Bạn sẽ thấy hai panel cực kỳ hữu ích:
+            <br>• <strong>Variables</strong> — tự động hiển thị tất cả biến hiện tại và giá trị của chúng (local, global, class attributes).
+            <br>• <strong>Watch</strong> — cho phép bạn thêm biểu thức tùy ý để theo dõi. Ví dụ: gõ <code>len(danh_sach)</code> hoặc <code>tong / len(danh_sach)</code> để xem giá trị cập nhật sau mỗi bước debug.
+            <br>Kết hợp cả hai, bạn có thể hiểu rõ trạng thái chương trình tại <em>mọi thời điểm</em> — hiệu quả gấp nhiều lần so với <code>print()</code>!</div>
+        </div>
+
+        <div class="callout callout-warn">
+          <span class="callout-icon">⚠️</span>
+          <div><strong>Lưu ý quan trọng:</strong> Để debug Python hoạt động, bạn cần đã cài extension <strong>Python Debugger</strong> (thường được cài tự động cùng extension Python). Nếu nhấn F5 mà không thấy tùy chọn debug Python, hãy kiểm tra lại extension và đảm bảo đã chọn đúng Python interpreter (<kbd>Ctrl+Shift+P</kbd> → <code>Python: Select Interpreter</code>).</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.lessons-list -->
+
+  <div style="text-align:center;margin-top:2rem">
+    <a href="python.html" class="btn btn-primary">Tiếp theo: Python Cơ Bản →</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 DevMaster Academy</span>
+    <div class="footer-links">
+      <a href="git.html">Git</a>
+      <a href="github.html">GitHub</a>
+      <a href="vscode.html">VS Code</a>
+      <a href="python.html">Python</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
