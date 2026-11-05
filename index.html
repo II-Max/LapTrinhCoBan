@@ -1,137 +1,508 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevMaster Academy — Nền tảng học lập trình hiện đại</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Python Starter - Hành Trang Lập Trình Python Cho Sinh Viên</title>
+  <meta name="description" content="Nền tảng tự học lập trình Python toàn diện cho tân sinh viên: Lý thuyết nhập môn cốt lõi, 50 bài tập rèn tư duy giải thuật từ dễ đến nâng cao, và trình chạy code WebAssembly trực tuyến.">
+  
+  <!-- Favicon Python SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2338bdf8' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2zm0-10h2v8h-2z'/></svg>">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- ========== HEADER ========== -->
+  <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <div class="brand-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <div class="header-container">
+      <div class="brand-logo">
+        <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M63.7 8.2c-29.3 0-27.5 12.7-27.5 12.7l.1 13.2h28.1v4H24.8S8.2 36.3 8.2 65.6s14.6 28.3 14.6 28.3h8.7V81.4s-.5-14.6 14.4-14.6h28.1s13.9.2 13.9-13.6V22.2s2-14-24.2-14zm-15.6 9.1c2.7 0 5 2.2 5 5s-2.2 5-5 5-5-2.2-5-5 2.3-5 5-5z" fill="#38BDF8"/>
+          <path d="M64.3 119.8c29.3 0 27.5-12.7 27.5-12.7l-.1-13.2H63.6v-4h39.6s16.6 1.8 16.6-27.5-14.6-28.3-14.6-28.3h-8.7v12.5s.5 14.6-14.4 14.6H54s-13.9-.2-13.9 13.6v31.1s-2 13.9 24.2 13.9zm15.6-9.1c-2.7 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.3 5-5 5z" fill="#FBBF24"/>
+        </svg>
+        <div>
+          <span>Python Starter</span>
+          <span class="brand-tagline">Hành trang tân sinh viên</span>
         </div>
-        DevMaster Academy
-      </a>
-      <nav class="nav-main">
-        <a href="index.html" class="active">Trang chủ</a>
-        <a href="git.html">Git</a>
-        <a href="github.html">GitHub</a>
-        <a href="vscode.html">VS Code</a>
-        <a href="python.html">Python</a>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="main-nav" id="main-nav">
+        <a href="#theory" class="nav-link active" data-tab="theory">
+          <span>📖</span> Lý Thuyết Cơ Bản
+        </a>
+        <a href="#exercises" class="nav-link" data-tab="exercises">
+          <span>🎯</span> 50 Bài Tập Tư Duy
+        </a>
+        <a href="#playground" class="nav-link" data-tab="playground">
+          <span>💻</span> Web Playground
+        </a>
+        <a href="#cheatsheet" class="nav-link" data-tab="cheatsheet">
+          <span>⚡</span> Sổ Tay Cú Pháp
+        </a>
+        <a href="#roadmap" class="nav-link" data-tab="roadmap">
+          <span>🗺️</span> Lộ Trình Sinh Viên
+        </a>
       </nav>
+
+      <!-- Header Actions: Search, Progress, Theme Toggle -->
+      <div class="header-actions">
+        <!-- Quick Search Button -->
+        <button class="search-trigger-btn" id="global-search-trigger" title="Tìm kiếm nhanh">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Tìm kiếm...</span>
+          <span class="search-shortcut">Ctrl+K</span>
+        </button>
+
+        <!-- Exercise Progress Pill -->
+        <div class="header-progress-wrap" title="Tiến độ hoàn thành 50 bài tập">
+          <div class="progress-pill-bar">
+            <div class="progress-pill-fill" id="progress-bar-fill"></div>
+          </div>
+          <span id="header-completed-badge">0%</span>
+        </div>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button class="icon-btn" id="theme-toggle-btn" title="Chuyển chế độ Sáng / Tối">
+          <span id="theme-toggle-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" title="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="container">
-      <span class="hero-badge">Nền tảng học tập cho lập trình viên hiện đại</span>
-      <h1 class="hero-title">Làm Chủ Công Cụ<br><span class="accent">Phát Triển</span> Phần Mềm</h1>
-      <p class="hero-lead">Học Git, GitHub, VS Code và Python từ con số không — qua bài giảng trực quan, bài tập tương tác và sandbox chạy code ngay trên trình duyệt. Tất cả những gì bạn cần để bắt đầu hành trình lập trình chuyên nghiệp.</p>
-      <div class="hero-actions">
-        <a href="git.html" class="btn btn-primary">Bắt đầu với Git →</a>
-        <a href="python.html" class="btn btn-secondary">Thử Python Sandbox</a>
+  <!-- ==========================================
+       MAIN CONTENT CONTAINER
+       ========================================== -->
+  <main class="main-wrapper">
+
+    <!-- ------------------------------------------
+         TAB 1: LÝ THUYẾT CƠ BẢN
+         ------------------------------------------ -->
+    <section class="tab-pane active" id="tab-theory">
+      <div class="theory-layout">
+        <!-- Sidebar bài học -->
+        <aside class="theory-sidebar">
+          <div class="sidebar-title">
+            <span>Mục lục bài học</span>
+            <span class="badge-mini">11 Bài học</span>
+          </div>
+          <ul class="lesson-nav-list" id="theory-lesson-list">
+            <!-- Render động bằng JS từ THEORY_DATA -->
+          </ul>
+        </aside>
+
+        <!-- Nội dung bài học đang xem -->
+        <div class="theory-content" id="theory-content-view">
+          <!-- Render động bằng JS -->
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== MODULE GRID ========== -->
-  <section class="modules-section">
-    <div class="container">
-      <h2 class="section-title">Chọn lộ trình học của bạn</h2>
-      <p class="section-desc">Bốn module cốt lõi, thiết kế cho người mới bắt đầu — mỗi module đi kèm bài tập thực hành để bạn áp dụng ngay.</p>
-      <div class="modules-grid">
-
-        <!-- Git -->
-        <a href="git.html" class="module-card">
-          <div class="module-icon">🔀</div>
-          <h3 class="module-title">Git Căn Bản</h3>
-          <p class="module-desc">Quản lý phiên bản mã nguồn chuyên nghiệp — từ init, commit, branch cho đến merge và giải quyết xung đột.</p>
-          <span class="module-meta">5 bài học · Bài tập thực hành</span>
-        </a>
-
-        <!-- GitHub -->
-        <a href="github.html" class="module-card">
-          <div class="module-icon">🐙</div>
-          <h3 class="module-title">GitHub & Làm Việc Nhóm</h3>
-          <p class="module-desc">Làm việc với remote repository, tạo Pull Request, review code và quản lý dự án cùng đội ngũ trên GitHub.</p>
-          <span class="module-meta">4 bài học · Bài tập thực hành</span>
-        </a>
-
-        <!-- VS Code -->
-        <a href="vscode.html" class="module-card">
-          <div class="module-icon">💻</div>
-          <h3 class="module-title">VS Code Năng Suất</h3>
-          <p class="module-desc">Thành thạo phím tắt, cấu hình workspace, cài đặt extension và tối ưu quy trình làm việc hàng ngày.</p>
-          <span class="module-meta">4 bài học · Tra cứu tương tác</span>
-        </a>
-
-        <!-- Python -->
-        <a href="python.html" class="module-card">
-          <div class="module-icon">🐍</div>
-          <h3 class="module-title">Python Cơ Bản</h3>
-          <p class="module-desc">Nắm vững cú pháp nền tảng — biến, kiểu dữ liệu, vòng lặp, hàm và cấu trúc dữ liệu cơ bản trong Python.</p>
-          <span class="module-meta">5 bài học · Sandbox trực tiếp</span>
-        </a>
-
+    <!-- ------------------------------------------
+         TAB 2: 50 BÀI TẬP RÈN TƯ DUY
+         ------------------------------------------ -->
+    <section class="tab-pane" id="tab-exercises">
+      <!-- Hero Banner -->
+      <div class="exercises-header-section">
+        <div class="ex-hero-content">
+          <h2>🎯 50 Bài Tập Lập Trình Python Điển Hình</h2>
+          <p>Được tuyển chọn và phân cấp khoa học từ bài toán nhập xuất số học cơ bản nhất đến các cấu trúc dữ liệu và giải thuật kinh điển (Two Sum, Binary Search, Bubble Sort, Memoization, CRUD Mini Project). Hãy giải tuần tự để xây dựng nền tảng tư duy lập trình vững chắc!</p>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ========== WHY SECTION ========== -->
-  <section class="why-section">
-    <div class="container">
-      <h2 class="section-title">Tại sao nên học bộ 3 công cụ này?</h2>
-      <p class="section-desc">Git, GitHub và VS Code là bộ ba không thể thiếu trong quy trình phát triển phần mềm hiện đại.</p>
-      <div class="why-grid">
+      <!-- Filter & Search Controls -->
+      <div class="filter-container">
+        <div class="filter-row-top">
+          <!-- Level Filter Pills -->
+          <div class="filter-pills">
+            <button class="filter-pill active" data-level="all">Tất cả bài tập</button>
+            <button class="filter-pill" data-level="1">⭐ Cấp 1 (I/O & Số học)</button>
+            <button class="filter-pill" data-level="2">⭐⭐ Cấp 2 (Điều kiện)</button>
+            <button class="filter-pill" data-level="3">⭐⭐⭐ Cấp 3 (Vòng lặp)</button>
+            <button class="filter-pill" data-level="4">⭐⭐⭐⭐ Cấp 4 (Chuỗi & List)</button>
+            <button class="filter-pill" data-level="5">⭐⭐⭐⭐⭐ Cấp 5 (Thuật toán)</button>
+          </div>
 
-        <div class="why-card">
-          <div class="why-card-icon">🚀</div>
-          <h3>Tăng tốc quy trình làm việc</h3>
-          <p>Kết hợp Git + VS Code giúp bạn viết code, commit và push chỉ trong vài giây — không cần rời khỏi editor. Phím tắt và tích hợp terminal tiết kiệm hàng giờ mỗi tuần.</p>
+          <!-- Search Input -->
+          <div class="search-input-wrap">
+            <span class="search-icon-inside">🔍</span>
+            <input type="text" id="exercise-search-input" placeholder="Tìm kiếm bài tập theo tên, từ khóa...">
+          </div>
         </div>
 
-        <div class="why-card">
-          <div class="why-card-icon">🤝</div>
-          <h3>Cộng tác chuyên nghiệp</h3>
-          <p>GitHub là nền tảng cộng tác phổ biến nhất thế giới. Hiểu Pull Request, code review và quản lý issue giúp bạn làm việc nhóm hiệu quả ngay từ ngày đầu.</p>
+        <div class="filter-row-bottom">
+          <div class="filter-selects">
+            <!-- Category Filter -->
+            <select class="custom-select" id="exercise-category-filter">
+              <option value="all">📁 Tất cả chủ đề</option>
+              <option value="Số học & I/O">Số học & I/O (Bài 1 - 10)</option>
+              <option value="Rẽ nhánh & Logic">Rẽ nhánh & Logic (Bài 11 - 20)</option>
+              <option value="Vòng lặp & Số học">Vòng lặp & Số học (Bài 21 - 30)</option>
+              <option value="Chuỗi & Danh sách">Chuỗi & Danh sách (Bài 31 - 40)</option>
+              <option value="Dict & Thuật toán">Dict & Thuật toán (Bài 41 - 50)</option>
+            </select>
+
+            <!-- Status Filter -->
+            <select class="custom-select" id="exercise-status-filter">
+              <option value="all">Trạng thái: Tất cả</option>
+              <option value="completed">✔ Đã hoàn thành</option>
+              <option value="pending">⏳ Chưa làm</option>
+              <option value="bookmarked">🔖 Đã lưu ôn tập</option>
+            </select>
+          </div>
+
+          <div class="filtered-count" id="filtered-exercises-count">
+            Đang hiển thị: 50 / 50 bài tập
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercise Cards Grid -->
+      <div class="exercises-grid" id="exercises-grid">
+        <!-- Render động 50 bài tập từ EXERCISES_DATA bằng JS -->
+      </div>
+    </section>
+
+    <!-- ------------------------------------------
+         TAB 3: WEB PLAYGROUND (PYODIDE PYTHON 3)
+         ------------------------------------------ -->
+    <section class="tab-pane" id="tab-playground">
+      <div class="playground-container">
+        <!-- Panel Soạn Thảo Code -->
+        <div class="editor-panel">
+          <div class="panel-toolbar">
+            <div class="panel-title">
+              <span>🐍 Trình Soạn Thảo Python</span>
+              <span id="pyodide-status" class="status-badge loading">Đang kiểm tra trình thông dịch...</span>
+            </div>
+
+            <div class="panel-actions">
+              <select class="custom-select" id="playground-templates" style="padding: 0.25rem 0.6rem; font-size: 0.8rem;">
+                <option value="">📂 Mẫu mã nguồn...</option>
+                <option value="hello">Hello World & Nhập tên</option>
+                <option value="sum">Tính tổng Gauss (1..100)</option>
+                <option value="list">List Comprehension</option>
+                <option value="dict">Thống kê từ vựng (Dict)</option>
+              </select>
+            </div>
+          </div>
+
+          <textarea id="code-editor" class="code-textarea" spellcheck="false" placeholder="# Viết hoặc dán mã nguồn Python vào đây...
+# Nhấn 'Chạy Code' bên dưới để thực thi"># Viết chương trình Python đầu tiên của bạn ở đây!
+ho_ten = input("Nhập họ tên của bạn: ")
+print(f"Xin chào tân sinh viên: {ho_ten}! Chúc bạn học tốt Python!")
+
+# Tính tổng các số chẵn từ 1 đến 20:
+so_chan = [x for x in range(1, 21) if x % 2 == 0]
+print("Các số chẵn:", so_chan)
+print("Tổng các số chẵn:", sum(so_chan))
+</textarea>
+
+          <!-- Input Buffer Box for input() -->
+          <div class="custom-input-box">
+            <label for="custom-input">📥 Dữ liệu đầu vào cho lệnh <code>input()</code> (Mỗi dòng một giá trị):</label>
+            <textarea id="custom-input" placeholder="Ví dụ:&#10;Nguyễn Văn An&#10;20">Nguyễn Văn An</textarea>
+          </div>
+
+          <div class="panel-toolbar" style="border-top: 1px solid var(--border-color); border-bottom: none;">
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('code-editor').value = ''">
+              Làm trống Editor
+            </button>
+            <button class="btn btn-primary" id="btn-run-code">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>Chạy Code (Run)</span>
+            </button>
+          </div>
         </div>
 
-        <div class="why-card">
-          <div class="why-card-icon">🛡️</div>
-          <h3>An toàn khi thử nghiệm</h3>
-          <p>Git cho phép bạn tạo nhánh (branch) để thử ý tưởng mà không sợ phá vỡ code chính. Mọi thay đổi đều có thể hoàn tác — bạn thoải mái sáng tạo và học hỏi.</p>
+        <!-- Panel Màn Hình Terminal Output -->
+        <div class="terminal-panel">
+          <div class="panel-toolbar">
+            <div class="panel-title">
+              <span>🖥 Màn hình Terminal Console</span>
+            </div>
+            <button class="btn btn-outline btn-sm" id="btn-clear-terminal">
+              Xóa Console
+            </button>
+          </div>
+
+          <div class="terminal-screen" id="terminal-output">
+            <span class="term-line info">Chào mừng bạn đến với Web Python Runner! Nhấn nút 'Chạy Code' màu xanh để chạy mã.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------
+         TAB 4: SỔ TAY CÚ PHÁP (CHEATSHEET)
+         ------------------------------------------ -->
+    <section class="tab-pane" id="tab-cheatsheet">
+      <div class="cheatsheet-header" style="margin-bottom: 1.5rem;">
+        <h2>⚡ Sổ Tay Cú Pháp Nhanh (Python Cheat Sheet)</h2>
+        <p style="color: var(--text-secondary);">Bản tra cứu nhanh các hàm, cấu trúc dữ liệu và phương thức thường dùng nhất trong các buổi thi thực hành và làm bài tập.</p>
+      </div>
+
+      <div class="cheatsheet-grid">
+        <!-- Card 1: Các hàm Built-in thông dụng -->
+        <div class="cheat-card">
+          <h3>📌 Hàm Built-in Cơ Bản</h3>
+          <ul class="cheat-list">
+            <li class="cheat-item">
+              <code>print(*objects, sep=' ', end='\n')</code>
+              <span>In dữ liệu ra màn hình. Tùy chỉnh dấu cách hoặc kết thúc dòng.</span>
+            </li>
+            <li class="cheat-item">
+              <code>len(s)</code>
+              <span>Trả về số lượng phần tử của chuỗi, danh sách, tuple hoặc dictionary.</span>
+            </li>
+            <li class="cheat-item">
+              <code>range(start, stop, step)</code>
+              <span>Tạo dãy số nguyên từ start đến stop - 1 với bước nhảy step.</span>
+            </li>
+            <li class="cheat-item">
+              <code>sum(iterable), max(...), min(...)</code>
+              <span>Tính tổng, tìm phần tử lớn nhất và nhỏ nhất cực nhanh.</span>
+            </li>
+            <li class="cheat-item">
+              <code>sorted(iterable, reverse=False)</code>
+              <span>Trả về một danh sách mới đã được sắp xếp tăng dần hoặc giảm dần.</span>
+            </li>
+            <li class="cheat-item">
+              <code>map(func, iterable)</code>
+              <span>Áp dụng hàm func lên từng phần tử. Ví dụ: <code>list(map(int, input().split()))</code>.</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="why-card">
-          <div class="why-card-icon">📋</div>
-          <h3>Yêu cầu bắt buộc của ngành</h3>
-          <p>Hơn 90% nhà tuyển dụng yêu cầu ứng viên thành thạo Git và GitHub. Đây là kỹ năng nền tảng bạn cần có trước khi ứng tuyển bất kỳ vị trí lập trình nào.</p>
+        <!-- Card 2: Phương thức Chuỗi (String) -->
+        <div class="cheat-card">
+          <h3>🔤 Phương Thức Chuỗi (String)</h3>
+          <ul class="cheat-list">
+            <li class="cheat-item">
+              <code>s.strip()</code>
+              <span>Xóa bỏ tất cả khoảng trắng và dấu xuống dòng ở hai đầu chuỗi.</span>
+            </li>
+            <li class="cheat-item">
+              <code>s.lower(), s.upper(), s.capitalize()</code>
+              <span>Chuyển thành chữ thường, chữ HOA, hoặc viết hoa chữ cái đầu tiên.</span>
+            </li>
+            <li class="cheat-item">
+              <code>s.split(sep=None)</code>
+              <span>Tách chuỗi thành một danh sách các từ.</span>
+            </li>
+            <li class="cheat-item">
+              <code>separator.join(list_of_strings)</code>
+              <span>Nối danh sách các từ thành một chuỗi duy nhất.</span>
+            </li>
+            <li class="cheat-item">
+              <code>s.replace(old, new)</code>
+              <span>Thay thế toàn bộ chuỗi con <code>old</code> bằng <code>new</code>.</span>
+            </li>
+            <li class="cheat-item">
+              <code>s.find(sub), s.count(sub)</code>
+              <span>Tìm vị trí xuất hiện đầu tiên của <code>sub</code> (-1 nếu không thấy), đếm số lần xuất hiện.</span>
+            </li>
+          </ul>
         </div>
 
+        <!-- Card 3: Phương thức Danh sách (List) -->
+        <div class="cheat-card">
+          <h3>📋 Phương Thức Danh Sách (List)</h3>
+          <ul class="cheat-list">
+            <li class="cheat-item">
+              <code>lst.append(x)</code>
+              <span>Thêm một phần tử <code>x</code> vào cuối danh sách (O(1)).</span>
+            </li>
+            <li class="cheat-item">
+              <code>lst.insert(i, x)</code>
+              <span>Chèn phần tử <code>x</code> vào vị trí chỉ số <code>i</code>.</span>
+            </li>
+            <li class="cheat-item">
+              <code>lst.pop([i])</code>
+              <span>Xóa và trả về phần tử tại vị trí <code>i</code> (mặc định là phần tử cuối).</span>
+            </li>
+            <li class="cheat-item">
+              <code>lst.remove(x)</code>
+              <span>Xóa phần tử đầu tiên trong danh sách có giá trị bằng <code>x</code>.</span>
+            </li>
+            <li class="cheat-item">
+              <code>lst.sort(reverse=False)</code>
+              <span>Sắp xếp danh sách tại chỗ (thay đổi trực tiếp danh sách ban đầu).</span>
+            </li>
+            <li class="cheat-item">
+              <code>lst.index(x)</code>
+              <span>Trả về chỉ mục vị trí xuất hiện đầu tiên của giá trị <code>x</code>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Dictionary & Set -->
+        <div class="cheat-card">
+          <h3>🗂️ Dictionary & Set</h3>
+          <ul class="cheat-list">
+            <li class="cheat-item">
+              <code>d.get(key, default)</code>
+              <span>Truy xuất an toàn giá trị của khóa <code>key</code>, trả về <code>default</code> nếu không tìm thấy.</span>
+            </li>
+            <li class="cheat-item">
+              <code>d.keys(), d.values(), d.items()</code>
+              <span>Lấy danh sách các khóa, danh sách giá trị, hoặc các cặp <code>(khóa, giá trị)</code>.</span>
+            </li>
+            <li class="cheat-item">
+              <code>set.add(x), set.remove(x)</code>
+              <span>Thêm hoặc xóa một phần tử trong tập hợp.</span>
+            </li>
+            <li class="cheat-item">
+              <code>A | B, A &amp; B, A - B</code>
+              <span>Các phép toán tập hợp: Hợp (Union), Giao (Intersection), và Hiệu (Difference).</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------
+         TAB 5: LỘ TRÌNH TÂN SINH VIÊN (ROADMAP)
+         ------------------------------------------ -->
+    <section class="tab-pane" id="tab-roadmap">
+      <div class="roadmap-container">
+        <div class="roadmap-header" style="text-align: center; margin-bottom: 2rem;">
+          <h2>🗺️ Lộ Trình 4 Tuần Làm Chủ Python Cho Tân Sinh Viên</h2>
+          <p style="color: var(--text-secondary);">Kế hoạch từng bước giúp bạn từ người chưa biết gì về code trở thành một sinh viên xuất sắc môn Nhập môn Lập trình!</p>
+        </div>
+
+        <div class="roadmap-timeline">
+          <!-- Tuần 1 -->
+          <div class="timeline-step">
+            <div class="step-box">
+              <div class="step-phase">Tuần 1: Khởi động & Làm quen Cú pháp</div>
+              <h3 class="step-title">Biến, Kiểu Dữ Liệu & Nhập Xuất Chuẩn</h3>
+              <p>Mục tiêu: Hiểu cơ chế hoạt động của máy tính, cài đặt Visual Studio Code và Python 3 trên máy tính cá nhân. Nắm chắc kiểu số, chuỗi, toán tử số học và định dạng f-strings.</p>
+              <div class="tip-box" style="margin-top: 0.75rem;">
+                <strong>🎯 Bài tập cần chinh phục:</strong> Hoàn thành toàn bộ Bài 1 đến Bài 10 trong mục Bài tập.
+              </div>
+            </div>
+          </div>
+
+          <!-- Tuần 2 -->
+          <div class="timeline-step">
+            <div class="step-box">
+              <div class="step-phase">Tuần 2: Tư duy Rẽ nhánh & Vòng lặp</div>
+              <h3 class="step-title">Cấu Trúc Điều Kiện If-Else & Vòng Lặp For/While</h3>
+              <p>Mục tiêu: Rèn luyện tư duy logic phân nhánh quyết định. Thành thạo vòng lặp duyệt số học, vẽ hình sao, tính giai thừa, kiểm tra số nguyên tố và số đối xứng.</p>
+              <div class="tip-box" style="margin-top: 0.75rem;">
+                <strong>🎯 Bài tập cần chinh phục:</strong> Hoàn thành Bài 11 đến Bài 30.
+              </div>
+            </div>
+          </div>
+
+          <!-- Tuần 3 -->
+          <div class="timeline-step">
+            <div class="step-box">
+              <div class="step-phase">Tuần 3: Cấu trúc Dữ liệu Nền tảng</div>
+              <h3 class="step-title">Xử Lý Chuỗi, Danh Sách (List) & Mảng</h3>
+              <p>Mục tiêu: Làm chủ các thao tác cắt lát slicing, thêm/sửa/xóa phần tử trong List, kỹ thuật 2 con trỏ, chuẩn hóa chuỗi và List Comprehension.</p>
+              <div class="tip-box" style="margin-top: 0.75rem;">
+                <strong>🎯 Bài tập cần chinh phục:</strong> Hoàn thành Bài 31 đến Bài 40.
+              </div>
+            </div>
+          </div>
+
+          <!-- Tuần 4 -->
+          <div class="timeline-step">
+            <div class="step-box">
+              <div class="step-phase">Tuần 4: Thuật toán & Mini Project</div>
+              <h3 class="step-title">Dictionary, Hàm, Giải Thuật & Dự Án CRUD</h3>
+              <p>Mục tiêu: Nắm vững Dictionary cho bài toán đếm tần suất và nhóm dữ liệu. Hiểu thuật toán tìm kiếm nhị phân (Binary Search), sắp xếp nổi bọt (Bubble Sort), đệ quy có nhớ (Memoization) và hoàn thiện hệ thống quản lý sinh viên mini.</p>
+              <div class="tip-box" style="margin-top: 0.75rem;">
+                <strong>🎯 Bài tập cần chinh phục:</strong> Hoàn thành Bài 41 đến Bài 50.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lời khuyên vàng -->
+        <div class="alert-info-box" style="margin-top: 2rem;">
+          <h3>💡 3 Quy Tắc "Vàng" Cho Sinh Viên Ngành Công Nghệ Thông Tin:</h3>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li><strong>Tự tay gõ code (Hand-on Coding):</strong> Đừng chỉ đọc lướt bằng mắt! Hãy gõ từng dòng code, chạy thử và cố tình làm cho nó báo lỗi để học cách đọc Traceback sửa lỗi.</li>
+            <li><strong>Vẽ luồng chương trình ra giấy trước:</strong> Khi gặp một bài toán khó, hãy lấy giấy nháp hoặc sổ tay ghi lại các bước giải bằng ngôn ngữ tự nhiên trước khi bắt tay viết mã.</li>
+            <li><strong>Học cách sử dụng Git và GitHub sớm:</strong> Lưu trữ tất cả bài tập đã giải lên kho lưu trữ GitHub cá nhân. Đó chính là bản CV đầu tiên chứng minh năng lực của bạn khi đi xin thực tập sau này!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       MODAL CHI TIẾT BÀI TẬP (EXERCISE MODAL)
+       ========================================== -->
+  <div class="modal-overlay" id="exercise-detail-modal">
+    <div class="modal-card">
+      <div class="modal-top-bar">
+        <span style="font-weight: 700; color: var(--text-primary);">Chi Tiết Bài Tập Lập Trình</span>
+        <button class="modal-close-btn" onclick="closeModal()" title="Đóng cửa sổ">✕</button>
+      </div>
+      <div class="modal-scroll-body" id="modal-exercise-body">
+        <!-- Render động nội dung bài tập bằng JS -->
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© 2026 DevMaster Academy</span>
-      <div class="footer-links">
-        <a href="git.html">Git</a>
-        <a href="github.html">GitHub</a>
-        <a href="vscode.html">VS Code</a>
-        <a href="python.html">Python</a>
+  <!-- ==========================================
+       GLOBAL SEARCH MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="global-search-modal">
+    <div class="modal-card search-modal-card">
+      <div class="search-input-header">
+        <span style="color: var(--text-muted); font-size: 1.25rem;">🔍</span>
+        <input type="text" id="global-search-input" placeholder="Tìm kiếm bài tập, hàm, lý thuyết (gõ để tìm)..." autocomplete="off">
+        <span class="search-shortcut">ESC để đóng</span>
+      </div>
+      <div class="search-results-list" id="search-results-list">
+        <!-- Render động kết quả tìm kiếm -->
       </div>
     </div>
-  </footer>
+  </div>
 
+  <!-- ==========================================
+       SCRIPTS
+       ========================================== -->
+  <script src="js/theory-data.js"></script>
+  <script src="js/exercises-data.js"></script>
+  <script src="js/playground.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
+
